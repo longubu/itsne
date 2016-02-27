@@ -8,20 +8,17 @@ import os
 import pandas as pd
 
 # itsne imports
-import itsne
+from itsne import itsne
 
 # set up paths
 output_path = 'outputs/mnist_circles.html'
 
 # load up features
-data_dir = '../Data'
+data_dir = '../data'
 data_path = os.path.join(data_dir, 'mnist_train_raw_pixels.csv')
 
 # load from data
 df = pd.read_csv(data_path)
-df['paths'] = df['uid'].apply(lambda x: os.path.join(data_dir,
-                                                     'images/%i.png' % x))
-img_paths = df.pop('paths')
 uids = df.pop('uid')
 labels = df.pop('label')
 

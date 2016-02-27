@@ -10,24 +10,30 @@ import pandas as pd
 from PIL import Image
 
 # itsne imports
-import itsne
+from itsne import itsne
 
 # set up paths
 output_path = 'outputs/mnist_imgs.html'
 
 # load up features
-data_dir = '../Data'
+data_dir = '../data'
 data_path = os.path.join(data_dir, 'mnist_train_raw_pixels.csv')
 
 # load from data
 df = pd.read_csv(data_path)
-df['paths'] = df['uid'].apply(lambda x: os.path.join(data_dir,
-                                                     'images/%i.png' % x))
-img_paths = df.pop('paths')
 uids = df.pop('uid')
 labels = df.pop('label')
 
-# load up images into giant array
+# check if directory of images exists
+img_dir = os.path.join(data_dir, 'mnist_images')
+if not os.path.exists(img_dir):
+    print("Image database needed does not exists: %s" % img_dir)
+    print("... Generating image database of mnist to %s" % img_dir)
+    from itsne.utils import datasets
+    datasets.generate_mnist_images(df.values, uids, img_dir)
+
+# load up images into giant array, type(uids) == pd.Series so we can use apply
+img_paths = uids.apply(lambda x: os.path.join(img_dir, '%i.png' % x))
 imgs = [np.array(Image.open(img_path)) for img_path in img_paths]
 
 # plot itsne in bokeh
