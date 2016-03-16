@@ -22,14 +22,21 @@ recommended to install via third party distribution such as anaconda. If you're 
 	cd itsne
 	python setup.py install
 	
-# Usage
-See `examples/*` for usage.
-- [mnist_imgs.py](examples/mnist_imgs.py): Example of using the itsne for clustering raw-pixels from MNIST dataset, plotting a subset of data using the images. See [output](examples/outputs/mnist_imgs.html)
-- [mnist_circles.py](examples/mnist_circles.py): Example of using the itsne for clustering raw-pixels from MNIST dataset, plotting the circles. See [output](examples/outputs/mnist_circles.html)
+# Examples
+See source files in `examples/*` for usage.
+- [mnist_circles.py](examples/mnist_circles.py): Example of using the itsne for clustering raw-pixels from MNIST dataset, plotting the circles. See [examples/output/mnist_circles.html](examples/outputs/mnist_circles.html) for interactivity.
+
+<img src="docs/imgs/mnist_circles.png" width="600" height="400" />
+
+- [mnist_imgs.py](examples/mnist_imgs.py): Example of using the itsne for clustering raw-pixels from MNIST dataset, plotting a subset of data using the images. See [examples/output/mnist_imgs.html](examples/outputs/mnist_imgs.html) for interactivity.
+
+<img src="docs/imgs/mnist_imgs.png" width="600" height="400" />
+
 - Many more examples to come...
 
 # TODO
 
+- Optimize speed/memory
 - More examples
 - Easier API, more flexibility
 - Better looking visualization
