@@ -36,7 +36,7 @@ Interactive visualizations of data using t-SNE clustering with Bokeh
 import bokeh.plotting as bkp
 import bokeh.models as bkm
 import numpy as np
-from sklearn.manifold import TSNE
+from tsne import bh_sne
 from sklearn.cluster import KMeans
 
 # local imports
@@ -97,7 +97,7 @@ def plot_tsne(output_path, X, uids=None, labels=None, imgs=None,
     See `itsne/examples` for usage.
     """
     # fit tsne coordinates
-    xy = TSNE().fit_transform(X)
+    xy = bh_sne(X, pca_d=None, perplexity=30., theta=0.5)
 
     # get H, W from image by loading first image of the set, if provided
     if imgs is not None:
